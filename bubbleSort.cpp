@@ -1,31 +1,64 @@
-#include <bits/stdc++.h>
+/*Idea: pushes the maximum to the last by adjacent swapping
+adjacent swapping is the keyword
+
+(opposite of the selection sort . In selection sort we find minimum and swap it)
+there will be many round of adjacent swapping 
+In every round one maximum element will go to the last 
+
+for example : 13 46 24 52 20 9 
+
+procedure:
+01.compare two adjacent element and swap them in order (e.g. for 13 46 , they will not swapped.
+but 46 24 will get swapped and become 13 24 46 52 20 9  )
+02.do it till the first maximum is on the last position of the array
+03.repeat this process for every n - k th maximum 
+like this 
+1st round ; 
+13 46 24 52 20 9 
+13 24 46 52 20 9
+13 24 46 52 20 9 
+13 24 46 20 52 9
+13 24 46 20 9 52 
+here 52 is the first maximum in the array , and this will get to the last in first round . 
+like this -- every 2nd , 3rd , 4th maximum in the array will get the last in every round. 
+
+for 6 element , there will be 5 round( because the first element will get sorted automatically)
+for n element , there will be n-1 round 
+for 1st round , swap number - 0 to n-1 = 5
+for 2nd round , swap number - 0 to n-2 = 4 ; 
+for 3rd round , swap number - 0 to n- 3 = 3 
+......
+
+
+*/
+#include<bits/stdc++.h>
 using namespace std;
- 
-void swp(int &a , int &b){
-    a = a+ b ;
+typedef long long ll;
+
+void swp (int &a , int &b){
+
+    a = a+b ; 
     b = a- b ;
-    a = a- b ;
+    a = a - b ;  
 }
- 
- 
-void bubbleSort(int ara[] , int n) {
- 
-    for(int i = 0 ; i < n - 1 ; i++){
- 
-        for(int j = 0 ; j < n - 1- i ; j++){
-            if(ara[j] > ara[j+1]){
-                swp(ara[j]  , ara[j+1]) ;
+
+void bubbleSort(int a[] , int n){
+
+    for( int i = 1 ; i <= n-1 ; i++){
+        for(int j = 0 ; j <=(n-i) ;j++ ){
+            if(a[j] > a[j+1]){
+                swp(a[j] , a[j+1]) ; 
             }
         }
     }
 }
- 
- 
- 
-int main(){
- 
-    int array[20] ;
-    int n ; cin>>n ;
+
+
+
+int main()
+{
+    int n ;cin>>n; 
+    int array[n] ; 
     for(int i = 0 ; i < n ; i++){
         cin>>array[i] ;
     }
@@ -34,4 +67,4 @@ int main(){
         cout<<array[i]<<" " ;
     }
  
-    }
+}
