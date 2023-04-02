@@ -1,3 +1,18 @@
+/*Idea:
+To remember : select minimum and swap them
+source.Strivers 
+
+lets say you have the following array : 13 46 24 52 20 9
+procedure:
+01.you have to find the minimum in the whole array and swap it with the first element .
+now the array is like this -> 9 46 24 52 20 13 
+02.now you have to select the minimum in 46 24 52 20 13 and swap it with 46 . 
+03. this will goes on for 5 times . so 
+for 6 elements you to swap 5 times . because the last elements remaining will be always sorted .*/
+
+
+
+
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long ll;
